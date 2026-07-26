@@ -1,8 +1,13 @@
 import streamlit as st
 import plotly.express as px
 import pandas as pd
-from motor_logico import calcular_todos_los_progresos
-from motor_logico import calcular_todos_los_progresos, obtener_aprobadas_licenciatura
+
+
+from motor_logico import (
+    calcular_todos_los_progresos, 
+    obtener_aprobadas_licenciatura, 
+    obtener_aprobadas_ia
+)
 
 # Configuración de la página
 st.set_page_config(page_title="Simulador Multi-Carrera UNaHur", layout="wide", page_icon="📊")
@@ -356,5 +361,47 @@ else:
                     st.markdown(f"- ✅ **{m}**")
             else:
                 st.caption("Sin materias aprobadas en este módulo.")
+
+
+
+# --- VISTA DETALLADA DE LA TECNICATURA EN INTELIGENCIA ARTIFICIAL ---
+st.divider()
+st.subheader("🤖 Materias Aprobadas / Reconocidas en Tecnicatura Univ. en Inteligencia Artificial")
+
+dict_ia = obtener_aprobadas_ia(seleccionadas)
+total_reconocidas_ia = sum(len(mats) for mats in dict_ia.values())
+
+if total_reconocidas_ia == 0:
+    st.info("Aún no tenés materias tildadas que acrediten en la Tecnicatura en IA.")
+else:
+    st.success(f"¡Tenés **{total_reconocidas_ia}** materias reconociéndose en la Tecnicatura en IA!")
+    
+    col_ia1, col_ia2, col_ia3 = st.columns(3)
+    
+    with col_ia1:
+        with st.expander("📌 1er Año", expanded=True):
+            if dict_ia["1er año"]:
+                for m in dict_ia["1er año"]:
+                    st.markdown(f"- ✅ **{m}**")
+            else:
+                st.caption("Sin materias aprobadas.")
+
+    with col_ia2:
+        with st.expander("📌 2do Año", expanded=True):
+            if dict_ia["2do año"]:
+                for m in dict_ia["2do año"]:
+                    st.markdown(f"- ✅ **{m}**")
+            else:
+                st.caption("Sin materias aprobadas.")
+
+    with col_ia3:
+        with st.expander("📌 3er Año", expanded=True):
+            if dict_ia["3er año"]:
+                for m in dict_ia["3er año"]:
+                    st.markdown(f"- ✅ **{m}**")
+            else:
+                st.caption("Sin materias aprobadas.")
+
+
 
 st.caption("Simulador desarrollado por Martín Maldonado - UNaHur")

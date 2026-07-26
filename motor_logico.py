@@ -436,8 +436,8 @@ def aplicar_reglas_compartidas(nombre_materia, carrera, plan, mats, horas, aca):
     # 31. Procesamiento de Imágenes y Visión por Computadora
     elif nombre_materia == "Procesamiento de Imágenes y Visión por Computadora":
         if plan == "2023" and "Inteligencia Artificial" in carrera:
-            m_res -= 1
-            h_res -= 96
+            m_res -= 2
+            h_res -= 160
         elif plan == "2025" and "Inteligencia Artificial" in carrera:
             m_res -= 1
             h_res -= 64
@@ -484,12 +484,21 @@ def aplicar_reglas_compartidas(nombre_materia, carrera, plan, mats, horas, aca):
 
     # 34. Programación Concurrente
     elif nombre_materia == "Programación Concurrente":
-        # Descuenta 64hs en Lic. Informática (ambos), Tec. Prog 2022 y Ciberseguridad 2025
+        # Descuenta 64hs y 1 materia en Lic. Informática (ambos), Tec. Prog 2022 y Ciberseguridad 2025
         if ("Licenciatura en Informática" in carrera) or \
            (plan == "2022" and "Tecnicatura en Programación" in carrera) or \
            (plan == "2025" and "Licenciatura en Ciberseguridad" in carrera):
             m_res -= 1
             h_res -= 64
+
+        # En Tecnicatura en IA 2023 descuenta 1 materia y 64 horas
+        elif plan == "2023" and ("Inteligencia Artificial" in carrera or "IA" in carrera):
+            m_res -= 1
+            h_res -= 64
+
+        # En Tecnicatura en IA 2025 descuenta 4 créditos ACA
+        elif plan == "2025" and ("Inteligencia Artificial" in carrera or "IA" in carrera):
+            a_res -= 4
         # Tecnicatura en Programación 2025 queda afuera (no tiene efecto)
 
     # 35. Programación Funcional
@@ -1397,6 +1406,7 @@ def calcular_todos_los_progresos(materias_aprobadas):
             if tiene_ingles_1:
                 mats_restantes -= 1
                 horas_restantes -= 32
+            
             if tiene_ingles_2:
                 mats_restantes -= 1
                 horas_restantes -= 32
@@ -1410,8 +1420,8 @@ def calcular_todos_los_progresos(materias_aprobadas):
                     horas_restantes -= 32
             elif "Inteligencia Artificial" in carrera:
                 if tiene_ingles_2:
-                    mats_restantes -= 1
-                    horas_restantes -= 32
+                    mats_restantes -= 2
+                    horas_restantes -= 96
             elif "Tecnicatura en Programación" in carrera:
                 if tiene_ingles_2:
                     mats_restantes -= 1
@@ -1629,3 +1639,85 @@ def obtener_aprobadas_licenciatura(materias_aprobadas):
 
     return aprobadas
 
+def obtener_aprobadas_ia(materias_aprobadas):
+    """
+    Evalúa las materias tildadas y devuelve un diccionario organizado por año
+    con las materias de la Tecnicatura Universitaria en Inteligencia Artificial.
+    """
+    aprobadas = {
+        "1er año": [],
+        "2do año": [],
+        "3er año": []
+    }
+
+    mats_set = {m.strip().lower() for m in materias_aprobadas}
+    
+    def tiene(nombre):
+        return nombre.strip().lower() in mats_set
+
+    # ==================== 1er Año ====================
+    if tiene("Matemática para informática I"):
+        aprobadas["1er año"].append("Matemática para informática I")
+
+    if tiene("Introducción a Logica y Problemas Computacionales"):
+        aprobadas["1er año"].append("Introducción a lógica y problemas computacionales")
+
+    if tiene("Introducción a la inteligencia artificial"):
+        aprobadas["1er año"].append("Introducción a la inteligencia artificial")
+
+    if tiene("Nuevos Entornos y Lenguajes"):
+        aprobadas["1er año"].append("Cultura y alfabetización digital en la universidad (ex Nuevos Entornos)")
+
+    if tiene("Álgebra lineal"):
+        aprobadas["1er año"].append("Álgebra lineal")
+
+    if tiene("Cálculo"):
+        aprobadas["1er año"].append("Cálculo")
+
+    if tiene("Taller de programación I"):
+        aprobadas["1er año"].append("Taller de Programación I")
+
+    if tiene("Tecnología y Sociedad"):
+        aprobadas["1er año"].append("Tecnología y sociedad")
+
+
+    # ==================== 2do Año ====================
+    if tiene("Bases de Datos"):
+        aprobadas["2do año"].append("Bases de datos")
+
+    if tiene("Probabilidad y Estadística"):
+        aprobadas["2do año"].append("Probabilidad y estadística")
+
+    if tiene("Taller de programación II"):
+        aprobadas["2do año"].append("Taller de Programación II")
+
+    if tiene("Fundamentos de ciencias de datos"):
+        aprobadas["2do año"].append("Fundamentos de ciencias de datos")
+
+    if tiene("Fundamentos Redes Neuronales"):
+        aprobadas["2do año"].append("Fundamentos de redes neuronales")
+
+    if tiene("Aprendizaje Automático"):
+        aprobadas["2do año"].append("Aprendizaje Automático")
+
+    if tiene("Taller de programación III"):
+        aprobadas["2do año"].append("Taller de Programación III")
+
+    if tiene("Inglés I") and tiene("Inglés II"):
+        aprobadas["2do año"].append("Inglés (Inglés I e II)")
+
+
+    # ==================== 3er Año ====================
+    if tiene("Materia UNAHUR I") or tiene("Materia UNAHUR II"):
+        aprobadas["3er año"].append("Asignatura UNAHUR")
+
+    if tiene("Aprendizaje Automático Avanzado"):
+        aprobadas["3er año"].append("Aprendizaje Automático Avanzado")
+
+    if tiene("Procesamiento de Imágenes y Visión por Computadora"):
+        aprobadas["3er año"].append("Procesamiento de Imágenes y Visión por Computadora")
+
+    if tiene("Proyecto integrador"):
+        aprobadas["3er año"].append("Proyecto integrador")
+
+    return aprobadas
