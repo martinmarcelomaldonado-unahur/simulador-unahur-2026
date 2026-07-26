@@ -1594,10 +1594,10 @@ def calcular_todos_los_progresos(materias_aprobadas):
     for _, row in df_maestro.iterrows():
         carrera = row['carrera']
         plan = str(row['plan'])
-        
         mats_restantes = row['total_materias']
         horas_restantes = row['total_horas']
-        aca_restante = row['a_res']
+        #aca_restante = row['a_res']
+        aca_restante = row['req_total_creditos_aca']
 
         # --- FASE 1: LÓGICA DE INGLÉS ---
         tiene_ingles_1 = "Inglés I" in materias_aprobadas
@@ -1655,7 +1655,7 @@ def calcular_todos_los_progresos(materias_aprobadas):
             )
 
         # --- CÁLCULO DE AVANCE FINAL ---
-        total_puntos = row['total_horas'] + (row['a_res'] * 10)
+        total_puntos = row['total_horas'] + (row['req_total_creditos_aca'] * 10)
         puntos_faltantes = horas_restantes + (max(0, aca_restante) * 10)
         
         avance = round(((total_puntos - puntos_faltantes) / total_puntos) * 100, 1) if total_puntos > 0 else 0
