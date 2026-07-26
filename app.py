@@ -223,45 +223,7 @@ with st.sidebar.expander("📚 Formativas Académicas y Profesionales", expanded
     for m in formativas_mats:
         if st.checkbox(m, key=f"fap_{m}"):
             seleccionadas.append(m)
-
-    # Actividades de Créditos: Sociales, Culturales y Deportivas
-with st.sidebar.expander("🎨 Sociales, Culturales y Deportivas", expanded=False):
-    scd_mats = [
-        "Voluntariados",
-        "Talleres deportivos",
-        "Taller de eSport",
-        "UNAHUR@TIC #1 - Encuentro de Informática",
-        "UNAHUR@TIC #1 - Encuentro de Informática (medio día)",
-        "UNAHUR@TIC - Encuentro de Informática (segunda participación)",
-        "UNAHUR@TIC - Encuentro de Informática (Tercera participación)",
-        "Actividades de Perspectiva de Género (12hs)",
-        "Actividades de Biblioteca",
-        "Talleres Culturales"
-    ]
-    for m in scd_mats:
-        if st.checkbox(m, key=f"scd_{m}"):
-            seleccionadas.append(m)
-
-
-    # Actividades de Créditos: Formativas en Docencia e Investigación
-with st.sidebar.expander("🔬 Formativas en Docencia e Investigación", expanded=False):
-    doc_inv_mats = [
-        "Participación en el programa “Un estudiantes/Un compañero/a”",
-        "Participación como Estudiante Asistente",
-        "Colaboración en materias",
-        "Participación en actividades de difusión académica",
-        "Participación en actividades de difusión académica (2da participación)",
-        "Computación Cuántica",
-        "Asistencia Técnica a grupos de Investigación de la Universidad",
-        "Python Day",
-        "Python Day (Segunda Participación)",
-        "Jornadas de la Industria 1ra Participación - Día 1",
-        "Jornadas de la Industria 2da Participación - Día 2",
-        "Exposición en Jornadas - 1ra Participación"
-    ]
-    for m in doc_inv_mats:
-        if st.checkbox(m, key=f"di_{m}"):
-            seleccionadas.append(m)
+            
 
 st.sidebar.divider()
 st.sidebar.info("El cálculo aplica las equivalencias automáticas entre planes.")
