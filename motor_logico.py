@@ -776,14 +776,13 @@ def aplicar_reglas_compartidas(nombre_materia, carrera, plan, mats, horas, aca):
 
     # 7. Proyecto integrador Final (VJ)
     elif nombre_materia == "Proyecto integrador Final (VJ)":
-        if plan == "2025":
-            if "Licenciatura en Informática" in carrera or "Licenciatura en VideoJuegos" in carrera:
+        if plan == "2025" and ("Licenciatura en Informática" in carrera or "Licenciatura en Videojuegos" in carrera):
                 a_res -= 6
-            elif "Tecnicatura en VideoJuegos" in carrera:
+        elif "Tecnicatura en Videojuegos" in carrera:
                 a_res -= 2
-        elif plan == "2022" and "Tecnicatura en VideoJuegos" in carrera:
+        elif plan == "2022" and "Tecnicatura en Videojuegos" in carrera:
             a_res -= 20
-
+            
     
 
     #el eje que absorve los datos 
