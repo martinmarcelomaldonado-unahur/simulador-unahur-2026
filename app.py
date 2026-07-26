@@ -174,6 +174,56 @@ with st.sidebar.expander("🎓 Licenciatura en Informática", expanded=False):
             if st.checkbox(m, key=f"eic_{m}"):
                 seleccionadas.append(m)
 
+
+    # Actividades de Créditos: Formativas Académicas y Profesionales
+with st.sidebar.expander("📚 Formativas Académicas y Profesionales", expanded=False):
+    formativas_mats = [
+        "Participación como asistente en Jornadas / Workshops / Congresos",
+        "Participación como asistente en Jornadas / Workshops / Congresos - (Evento de 1 día presencial)",
+        "Talleres especiales - Taller de GitHub",
+        "Talleres especiales - Taller de Gestión de la seguridad informática",
+        "Talleres Especiales - Gestión de Firewall",
+        "Talleres Especiales (más de 32hs)",
+        "Participación en Competencias Estudiantiles - Rally Innovación",
+        "Participación en competencias estudiantiles",
+        "Rally Latinoamericano de Innovación - 1ra participación",
+        "Rally Latinoamericano de Innovación - 2da participación",
+        "Participación en Proyectos Abiertos",
+        "Intercambios estudiantiles presenciales y/o virtuales",
+        "Cursadas Voluntarias en otras Universidades",
+        "Formación Profesional",
+        "Formación Profesional (Segunda Participación)",
+        "Taller de Procesamiento digital de imágenes",
+        "Taller de Introducción al procesamiento digital de Imágenes",
+        "Curso Project Management",
+        "Curso Oracle SQL & PL SQL",
+        "Curso Redes Móviles Celulares",
+        "Curso Enlaces Inalámbricos Fijos",
+        "Curso Redes de Fibra Óptica",
+        "Curso Introducción al Cómputo Paralelo",
+        "Presentación de nuevos planes de las carreras de informática",
+        "Cómo hacer videojuegos sin volverse loco: Gestión, Diseño y Validación de Usuario",
+        "Creación y Animación de Personajes 2D-Del boceto al Sprite Sheet.",
+        "Diseño Narrativo de Personajes: Cómo comenzar un relato",
+        "Del Prototipo al Portfolio Profesional",
+        "Taller de robótica",
+        "Charlas con Graduados",
+        "PIA Taller 1",
+        "Taller Introductorio de Integrales",
+        "Lenguajes educativos para aprender a programar",
+        "Git",
+        "GraphQL en Springboot",
+        "De wollok a Java",
+        "Taller de programación",
+        "Principios básicos de la Seguridad de la Información y la Ciberseguridad",
+        "Vibe Coding",
+        "Taller de uso de herramientas para el procesamiento de datos",
+        "Curso Introducción a UML"
+    ]
+    for m in formativas_mats:
+        if st.checkbox(m, key=f"fap_{m}"):
+            seleccionadas.append(m)
+
 st.sidebar.divider()
 st.sidebar.info("El cálculo aplica las equivalencias automáticas entre planes.")
 

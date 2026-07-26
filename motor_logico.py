@@ -783,6 +783,75 @@ def aplicar_reglas_compartidas(nombre_materia, carrera, plan, mats, horas, aca):
         elif plan == "2022" and "Tecnicatura en Videojuegos" in carrera:
             a_res -= 20
             
+
+    # --- ACTIVIDADES DE CRÉDITOS: PARTE 2 - FORMATIVAS ACADÉMICAS Y PROFESIONALES ---
+
+    descuentos_antiguos = {
+        # Descuentan 1 en planes viejos (2022/2023)
+        "Participación como asistente en Jornadas / Workshops / Congresos - (Evento de 1 día presencial)": 1,
+        "Formación Profesional": 1,
+        "Formación Profesional (Segunda Participación)": 1,
+        "Cómo hacer videojuegos sin volverse loco: Gestión, Diseño y Validación de Usuario": 1,
+        "Creación y Animación de Personajes 2D-Del boceto al Sprite Sheet.": 1,
+        "Charlas con Graduados": 1,
+        "PIA Taller 1": 1,
+        "Taller Introductorio de Integrales": 1,
+        "Taller de Introducción al procesamiento digital de Imágenes": 1,
+        "Git": 1,
+        "GraphQL en Springboot": 1,
+
+        # Descuentan 2 en planes viejos (2022/2023)
+        "Participación como asistente en Jornadas / Workshops / Congresos": 2,
+        "Talleres especiales - Taller de GitHub": 2,
+        "Talleres especiales - Taller de Gestión de la seguridad informática": 2,
+        "Taller de Procesamiento digital de imágenes": 2,
+        "Presentación de nuevos planes de las carreras de informática": 2,
+        "Diseño Narrativo de Personajes: Cómo comenzar un relato": 2,
+        "Taller de robótica": 2,
+        "Curso Introducción al Cómputo Paralelo": 2,
+        "De wollok a Java": 2,
+        "Taller de programación": 2,
+        "Principios básicos de la Seguridad de la Información y la Ciberseguridad": 2,
+        "Vibe Coding": 2,
+        "Taller de uso de herramientas para el procesamiento de datos": 2,
+
+        # Descuentan 3 en planes viejos (2022/2023)
+        "Talleres Especiales - Gestión de Firewall": 3,
+        "Participación en Competencias Estudiantiles - Rally Innovación": 3,
+        "Participación en competencias estudiantiles": 3,
+        "Participación en Proyectos Abiertos": 3,
+        "Intercambios estudiantiles presenciales y/o virtuales": 3,
+        "Talleres Especiales (más de 32hs)": 3,
+        "Curso Project Management": 3,
+        "Curso Oracle SQL & PL SQL": 3,
+        "Curso Redes Móviles Celulares": 3,
+        "Curso Enlaces Inalámbricos Fijos": 3,
+        "Curso Redes de Fibra Óptica": 3,
+        "Del Prototipo al Portfolio Profesional": 3,
+        "Lenguajes educativos para aprender a programar": 3,
+        "Curso Introducción a UML": 3,
+
+        # Descuentan 5 en planes viejos (2022/2023)
+        "Rally Latinoamericano de Innovación - 1ra participación": 5,
+        "Rally Latinoamericano de Innovación - 2da participación": 5,
+        "Cursadas Voluntarias en otras Universidades": 5,
+    }
+
+    if nombre_materia in descuentos_antiguos:
+        # Excepción Licenciatura en Informática 2018: no tiene efecto
+        if plan == "2018" and "Licenciatura en Informática" in carrera:
+            pass
+        # Planes 2025: descuentan 1 por defecto (salvo Cursadas Voluntarias y Talleres >32hs que descuentan 2)
+        elif plan == "2025":
+            if nombre_materia in ["Cursadas Voluntarias en otras Universidades", "Talleres Especiales (más de 32hs)"]:
+                a_res -= 2
+            else:
+                a_res -= 1
+        # Planes 2022 / 2023: aplican el descuento según la tabla
+        elif plan in ["2022", "2023"]:
+            a_res -= descuentos_antiguos[nombre_materia]
+
+
     
 
     #el eje que absorve los datos 
