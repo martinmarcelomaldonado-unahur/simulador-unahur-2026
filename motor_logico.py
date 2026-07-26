@@ -712,6 +712,78 @@ def aplicar_reglas_compartidas(nombre_materia, carrera, plan, mats, horas, aca):
             m_res -= 1
             h_res -= 32
 
+    # --- ACTIVIDADES DE CRÉDITOS: PARTE 1 - ESPACIO DE INTEGRACIÓN CURRICULAR ---
+
+    # 1. Desarrollo de Aplicaciones, en UNAHUR (Prog)
+    elif nombre_materia == "Desarrollo de Aplicaciones, en UNAHUR (Prog)":
+        if plan == "2025" and "Licenciatura en Informática" in carrera:
+            a_res -= 6
+        elif "Tecnicatura en Programación" in carrera:
+            if plan == "2022":
+                a_res -= 20
+            elif plan == "2025":
+                a_res -= 4
+
+    # 2. Práctica Profesional Supervisada PPS (Prog)
+    elif nombre_materia == "Práctica Profesional Supervisada PPS (Prog)":
+        if plan == "2025" and "Licenciatura en Informática" in carrera:
+            a_res -= 6
+        elif "Tecnicatura en Programación" in carrera:
+            if plan == "2022":
+                a_res -= 20
+            elif plan == "2025":
+                a_res -= 4
+
+    # 3. Proyecto Integrador (Prog)
+    elif nombre_materia == "Proyecto Integrador (Prog)":
+        if plan == "2025" and "Licenciatura en Informática" in carrera:
+            a_res -= 6
+        elif "Tecnicatura en Programación" in carrera:
+            if plan == "2022":
+                a_res -= 20
+            elif plan == "2025":
+                a_res -= 4
+
+    # 4. Desarrollo de Aplicaciones, en UNAHUR (Redes)
+    elif nombre_materia == "Desarrollo de Aplicaciones, en UNAHUR (Redes)":
+        if plan == "2025" and ("Licenciatura en Informática" in carrera or "Licenciatura en Ciberseguridad" in carrera):
+            a_res -= 6
+        elif "Tecnicatura en Redes" in carrera:
+            if plan == "2022":
+                a_res -= 20
+            elif plan == "2025":
+                a_res -= 2
+
+    # 5. Práctica Profesional Supervisada PPS (Redes)
+    elif nombre_materia == "Práctica Profesional Supervisada PPS (Redes)":
+        if plan == "2025" and ("Licenciatura en Informática" in carrera or "Licenciatura en Ciberseguridad" in carrera):
+            a_res -= 6
+        elif "Tecnicatura en Redes" in carrera:
+            if plan == "2022":
+                a_res -= 20
+            elif plan == "2025":
+                a_res -= 2
+
+    # 6. Proyecto Integrador (Redes)
+    elif nombre_materia == "Proyecto Integrador (Redes)":
+        if plan == "2025" and ("Licenciatura en Informática" in carrera or "Licenciatura en Ciberseguridad" in carrera):
+            a_res -= 6
+        elif "Tecnicatura en Redes" in carrera:
+            if plan == "2022":
+                a_res -= 20
+            elif plan == "2025":
+                a_res -= 2
+
+    # 7. Proyecto integrador Final (VJ)
+    elif nombre_materia == "Proyecto integrador Final (VJ)":
+        if plan == "2025":
+            if "Licenciatura en Informática" in carrera or "Licenciatura en VideoJuegos" in carrera:
+                a_res -= 6
+            elif "Tecnicatura en VideoJuegos" in carrera:
+                a_res -= 2
+        elif plan == "2022" and "Tecnicatura en VideoJuegos" in carrera:
+            a_res -= 20
+
     
 
     #el eje que absorve los datos 

@@ -159,6 +159,21 @@ with st.sidebar.expander("🎓 Licenciatura en Informática", expanded=False):
         if st.checkbox(m, key=f"lic_info_{m}"):
             seleccionadas.append(m)
 
+    # Actividades de Créditos: Espacio de Integración Curricular
+    with st.sidebar.expander("🎖️ Espacio de Integración Curricular", expanded=False):
+        eic_mats = [
+            "Desarrollo de Aplicaciones, en UNAHUR (Prog)",
+            "Práctica Profesional Supervisada PPS (Prog)",
+            "Proyecto Integrador (Prog)",
+            "Desarrollo de Aplicaciones, en UNAHUR (Redes)",
+            "Práctica Profesional Supervisada PPS (Redes)",
+            "Proyecto Integrador (Redes)",
+            "Proyecto integrador Final (VJ)"
+        ]
+        for m in eic_mats:
+            if st.checkbox(m, key=f"eic_{m}"):
+                seleccionadas.append(m)
+
 st.sidebar.divider()
 st.sidebar.info("El cálculo aplica las equivalencias automáticas entre planes.")
 
