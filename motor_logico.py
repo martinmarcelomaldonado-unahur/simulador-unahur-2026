@@ -1265,108 +1265,108 @@ def aplicar_reglas_compartidas(nombre_materia, carrera, plan, mats, horas, aca):
         if is_lic_info_2018:
             pass
         elif plan == "2025":
-            req_total_creditos_aca -= 1
+            a_res -= 1
         elif plan in ["2022", "2023"]:
-            req_total_creditos_aca -= 3
+            a_res -= 3
 
     # 2. Participación como Estudiante Asistente
     elif nombre_materia == "Participación como Estudiante Asistente":
         if is_lic_info_2018:
             pass
         elif plan == "2025":
-            req_total_creditos_aca -= 5
+            a_res -= 5
         elif plan in ["2022", "2023"]:
-            req_total_creditos_aca -= 3
+            a_res -= 3
 
     # 3. Colaboración en materias
     elif nombre_materia == "Colaboración en materias":
         if is_lic_info_2018:
             pass
         elif plan == "2025":
-            req_total_creditos_aca -= 2
+            a_res -= 2
         elif plan in ["2022", "2023"]:
-            req_total_creditos_aca -= 5
+            a_res -= 5
 
     # 4. Participación en actividades de difusión académica
     elif nombre_materia == "Participación en actividades de difusión académica":
         if is_lic_info_2018:
             pass
         elif plan == "2025":
-            req_total_creditos_aca -= 1
+            a_res -= 1
         elif plan in ["2022", "2023"]:
-            req_total_creditos_aca -= 3
+            a_res -= 3
 
     # 5. Participación en actividades de difusión académica (2da participación)
     elif nombre_materia == "Participación en actividades de difusión académica (2da participación)":
         if is_lic_info_2018:
             pass
         elif plan == "2025":
-            req_total_creditos_aca -= 1
+            a_res -= 1
         elif plan in ["2022", "2023"]:
-            req_total_creditos_aca -= 2
+            a_res -= 2
 
     # 6. Computación Cuántica
     elif nombre_materia == "Computación Cuántica":
         if is_lic_info_2018:
             pass
         elif plan == "2025":
-            req_total_creditos_aca -= 2
+            a_res -= 2
         elif plan in ["2022", "2023"]:
-            req_total_creditos_aca -= 3
+            a_res -= 3
 
     # 7. Asistencia Técnica a grupos de Investigación de la Universidad
     elif nombre_materia == "Asistencia Técnica a grupos de Investigación de la Universidad":
         if is_lic_info_2018:
             pass
         elif plan == "2025":
-            req_total_creditos_aca -= 5
+            a_res -= 5
         elif plan in ["2022", "2023"]:
-            req_total_creditos_aca -= 5
+            a_res -= 5
 
     # 8. Python Day
     elif nombre_materia == "Python Day":
         if is_lic_info_2018:
             pass
         elif plan == "2025":
-            req_total_creditos_aca -= 1
+            a_res -= 1
         elif plan in ["2022", "2023"]:
-            req_total_creditos_aca -= 2
+            a_res -= 2
 
     # 9. Python Day (Segunda Participación)
     elif nombre_materia == "Python Day (Segunda Participación)":
         if is_lic_info_2018:
             pass
         elif plan == "2025":
-            req_total_creditos_aca -= 1
+            a_res -= 1
         elif plan in ["2022", "2023"]:
-            req_total_creditos_aca -= 2
+            a_res -= 2
 
     # 10. Jornadas de la Industria 1ra Participación - Día 1
     elif nombre_materia == "Jornadas de la Industria 1ra Participación - Día 1":
         if is_lic_info_2018:
             pass
         elif plan == "2025":
-            req_total_creditos_aca -= 1
+            a_res -= 1
         elif plan in ["2022", "2023"]:
-            req_total_creditos_aca -= 1
+            a_res -= 1
 
     # 11. Jornadas de la Industria 2da Participación - Día 2
     elif nombre_materia == "Jornadas de la Industria 2da Participación - Día 2":
         if is_lic_info_2018:
             pass
         elif plan == "2025":
-            req_total_creditos_aca -= 1
+            a_res -= 1
         elif plan in ["2022", "2023"]:
-            req_total_creditos_aca -= 1
+            a_res -= 1
 
     # 12. Exposición en Jornadas - 1ra Participación
     elif nombre_materia == "Exposición en Jornadas - 1ra Participación":
         if is_lic_info_2018:
             pass
         elif plan == "2025":
-            req_total_creditos_aca -= 2
+            a_res -= 2
         elif plan in ["2022", "2023"]:
-            req_total_creditos_aca -= 2
+            a_res -= 2
 
     #parte 3 
     # --- ACTIVIDADES DE CRÉDITOS: PARTE 3 - SOCIALES, CULTURALES Y DEPORTIVAS ---
@@ -1475,108 +1475,108 @@ def aplicar_reglas_compartidas(nombre_materia, carrera, plan, mats, horas, aca):
         if is_lic_info_2018:
             pass
         elif plan == "2025":
-            req_total_creditos_aca -= 1
+            a_res -= 1
         elif plan in ["2022", "2023"]:
-            req_total_creditos_aca -= 3
+            a_res -= 3
 
     # 2. Participación como Estudiante Asistente
     elif nombre_materia == "Participación como Estudiante Asistente":
         if is_lic_info_2018:
             pass
         elif plan == "2025":
-            req_total_creditos_aca -= 5
+            a_res -= 5
         elif plan in ["2022", "2023"]:
-            req_total_creditos_aca -= 3
+            a_res -= 3
 
     # 3. Colaboración en materias
     elif nombre_materia == "Colaboración en materias":
         if is_lic_info_2018:
             pass
         elif plan == "2025":
-            req_total_creditos_aca -= 2
+            a_res -= 2
         elif plan in ["2022", "2023"]:
-            req_total_creditos_aca -= 5
+            a_res -= 5
 
     # 4. Participación en actividades de difusión académica
     elif nombre_materia == "Participación en actividades de difusión académica":
         if is_lic_info_2018:
             pass
         elif plan == "2025":
-            req_total_creditos_aca -= 1
+            a_res -= 1
         elif plan in ["2022", "2023"]:
-            req_total_creditos_aca -= 3
+            a_res -= 3
 
     # 5. Participación en actividades de difusión académica (2da participación)
     elif nombre_materia == "Participación en actividades de difusión académica (2da participación)":
         if is_lic_info_2018:
             pass
         elif plan == "2025":
-            req_total_creditos_aca -= 1
+            a_res -= 1
         elif plan in ["2022", "2023"]:
-            req_total_creditos_aca -= 2
+            a_res -= 2
 
     # 6. Computación Cuántica
     elif nombre_materia == "Computación Cuántica":
         if is_lic_info_2018:
             pass
         elif plan == "2025":
-            req_total_creditos_aca -= 2
+            a_res -= 2
         elif plan in ["2022", "2023"]:
-            req_total_creditos_aca -= 3
+            a_res -= 3
 
     # 7. Asistencia Técnica a grupos de Investigación de la Universidad
     elif nombre_materia == "Asistencia Técnica a grupos de Investigación de la Universidad":
         if is_lic_info_2018:
             pass
         elif plan == "2025":
-            req_total_creditos_aca -= 5
+            a_res -= 5
         elif plan in ["2022", "2023"]:
-            req_total_creditos_aca -= 5
+            a_res -= 5
 
     # 8. Python Day
     elif nombre_materia == "Python Day":
         if is_lic_info_2018:
             pass
         elif plan == "2025":
-            req_total_creditos_aca -= 1
+            a_res -= 1
         elif plan in ["2022", "2023"]:
-            req_total_creditos_aca -= 2
+            a_res -= 2
 
     # 9. Python Day (Segunda Participación)
     elif nombre_materia == "Python Day (Segunda Participación)":
         if is_lic_info_2018:
             pass
         elif plan == "2025":
-            req_total_creditos_aca -= 1
+            a_res -= 1
         elif plan in ["2022", "2023"]:
-            req_total_creditos_aca -= 2
+            a_res -= 2
 
     # 10. Jornadas de la Industria 1ra Participación - Día 1
     elif nombre_materia == "Jornadas de la Industria 1ra Participación - Día 1":
         if is_lic_info_2018:
             pass
         elif plan == "2025":
-            req_total_creditos_aca -= 1
+            a_res -= 1
         elif plan in ["2022", "2023"]:
-            req_total_creditos_aca -= 1
+            a_res -= 1
 
     # 11. Jornadas de la Industria 2da Participación - Día 2
     elif nombre_materia == "Jornadas de la Industria 2da Participación - Día 2":
         if is_lic_info_2018:
             pass
         elif plan == "2025":
-            req_total_creditos_aca -= 1
+            a_res -= 1
         elif plan in ["2022", "2023"]:
-            req_total_creditos_aca -= 1
+            a_res -= 1
 
     # 12. Exposición en Jornadas - 1ra Participación
     elif nombre_materia == "Exposición en Jornadas - 1ra Participación":
         if is_lic_info_2018:
             pass
         elif plan == "2025":
-            req_total_creditos_aca -= 2
+            a_res -= 2
         elif plan in ["2022", "2023"]:
-            req_total_creditos_aca -= 2
+            a_res -= 2
 
 
 
@@ -1597,7 +1597,7 @@ def calcular_todos_los_progresos(materias_aprobadas):
         
         mats_restantes = row['total_materias']
         horas_restantes = row['total_horas']
-        aca_restante = row['req_total_creditos_aca']
+        aca_restante = row['a_res']
 
         # --- FASE 1: LÓGICA DE INGLÉS ---
         tiene_ingles_1 = "Inglés I" in materias_aprobadas
@@ -1655,7 +1655,7 @@ def calcular_todos_los_progresos(materias_aprobadas):
             )
 
         # --- CÁLCULO DE AVANCE FINAL ---
-        total_puntos = row['total_horas'] + (row['req_total_creditos_aca'] * 10)
+        total_puntos = row['total_horas'] + (row['a_res'] * 10)
         puntos_faltantes = horas_restantes + (max(0, aca_restante) * 10)
         
         avance = round(((total_puntos - puntos_faltantes) / total_puntos) * 100, 1) if total_puntos > 0 else 0
