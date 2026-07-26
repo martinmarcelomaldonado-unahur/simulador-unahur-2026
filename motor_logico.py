@@ -785,6 +785,7 @@ def aplicar_reglas_compartidas(nombre_materia, carrera, plan, mats, horas, aca):
             
 
     # --- ACTIVIDADES DE CRÉDITOS: PARTE 2 - FORMATIVAS ACADÉMICAS Y PROFESIONALES ---
+    
     carrera_lower = carrera.lower()
     is_lic_info_2018 = (plan == "2018" and ("licenciatura en informática" in carrera_lower or "licenciatura en informatica" in carrera_lower))
 
