@@ -1158,6 +1158,104 @@ def aplicar_reglas_compartidas(nombre_materia, carrera, plan, mats, horas, aca):
             a_res -= 3
     
 
+
+    # --- ACTIVIDADES DE CRÉDITOS: PARTE 3 - SOCIALES, CULTURALES Y DEPORTIVAS ---
+    carrera_lower = carrera.lower()
+    is_lic_info_2018 = (plan == "2018" and ("licenciatura en informática" in carrera_lower or "licenciatura en informatica" in carrera_lower))
+
+    # 1. Voluntariados
+    if nombre_materia == "Voluntariados":
+        if is_lic_info_2018:
+            pass
+        elif plan == "2025":
+            a_res -= 1
+        elif plan in ["2022", "2023"]:
+            a_res -= 3
+
+    # 2. Talleres deportivos
+    elif nombre_materia == "Talleres deportivos":
+        if is_lic_info_2018:
+            pass
+        elif plan == "2025":
+            a_res -= 1
+        elif plan in ["2022", "2023"]:
+            a_res -= 3
+
+    # 3. Taller de eSport
+    elif nombre_materia == "Taller de eSport":
+        if is_lic_info_2018:
+            pass
+        elif plan == "2025":
+            a_res -= 1
+        elif plan in ["2022", "2023"]:
+            a_res -= 2
+
+    # 4. UNAHUR@TIC #1 - Encuentro de Informática
+    elif nombre_materia == "UNAHUR@TIC #1 - Encuentro de Informática":
+        if is_lic_info_2018:
+            pass
+        elif plan == "2025":
+            a_res -= 1
+        elif plan in ["2022", "2023"]:
+            a_res -= 2
+
+    # 5. UNAHUR@TIC #1 - Encuentro de Informática (medio día)
+    elif nombre_materia == "UNAHUR@TIC #1 - Encuentro de Informática (medio día)":
+        if is_lic_info_2018:
+            pass
+        elif plan == "2025":
+            a_res -= 1
+        elif plan in ["2022", "2023"]:
+            a_res -= 1
+
+    # 6. UNAHUR@TIC - Encuentro de Informática (segunda participación)
+    elif nombre_materia == "UNAHUR@TIC - Encuentro de Informática (segunda participación)":
+        if is_lic_info_2018:
+            pass
+        elif plan == "2025":
+            a_res -= 1
+        elif plan in ["2022", "2023"]:
+            a_res -= 2
+
+    # 7. UNAHUR@TIC - Encuentro de Informática (Tercera participación)
+    elif nombre_materia == "UNAHUR@TIC - Encuentro de Informática (Tercera participación)":
+        if is_lic_info_2018:
+            pass
+        elif plan == "2025":
+            a_res -= 1
+        elif plan in ["2022", "2023"]:
+            a_res -= 2
+
+    # 8. Actividades de Perspectiva de Género (12hs)
+    elif nombre_materia == "Actividades de Perspectiva de Género (12hs)":
+        if is_lic_info_2018:
+            pass
+        elif plan == "2025":
+            a_res -= 1
+        elif plan in ["2022", "2023"]:
+            a_res -= 3
+
+    # 9. Actividades de Biblioteca
+    elif nombre_materia == "Actividades de Biblioteca":
+        if is_lic_info_2018:
+            pass
+        elif plan == "2025":
+            a_res -= 1
+        elif plan in ["2022", "2023"]:
+            a_res -= 2
+
+    # 10. Talleres Culturales
+    elif nombre_materia == "Talleres Culturales":
+        if is_lic_info_2018:
+            pass
+        elif plan == "2025":
+            a_res -= 1
+        elif plan in ["2022", "2023"]:
+            a_res -= 3
+
+
+
+
     #el eje que absorve los datos 
     return m_res, h_res, a_res
 

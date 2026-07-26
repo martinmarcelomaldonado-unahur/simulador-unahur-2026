@@ -224,6 +224,24 @@ with st.sidebar.expander("📚 Formativas Académicas y Profesionales", expanded
         if st.checkbox(m, key=f"fap_{m}"):
             seleccionadas.append(m)
 
+    # Actividades de Créditos: Sociales, Culturales y Deportivas
+with st.sidebar.expander("🎨 Sociales, Culturales y Deportivas", expanded=False):
+    scd_mats = [
+        "Voluntariados",
+        "Talleres deportivos",
+        "Taller de eSport",
+        "UNAHUR@TIC #1 - Encuentro de Informática",
+        "UNAHUR@TIC #1 - Encuentro de Informática (medio día)",
+        "UNAHUR@TIC - Encuentro de Informática (segunda participación)",
+        "UNAHUR@TIC - Encuentro de Informática (Tercera participación)",
+        "Actividades de Perspectiva de Género (12hs)",
+        "Actividades de Biblioteca",
+        "Talleres Culturales"
+    ]
+    for m in scd_mats:
+        if st.checkbox(m, key=f"scd_{m}"):
+            seleccionadas.append(m)
+
 st.sidebar.divider()
 st.sidebar.info("El cálculo aplica las equivalencias automáticas entre planes.")
 
