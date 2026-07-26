@@ -785,73 +785,377 @@ def aplicar_reglas_compartidas(nombre_materia, carrera, plan, mats, horas, aca):
             
 
     # --- ACTIVIDADES DE CRÉDITOS: PARTE 2 - FORMATIVAS ACADÉMICAS Y PROFESIONALES ---
+    carrera_lower = carrera.lower()
+    is_lic_info_2018 = (plan == "2018" and ("licenciatura en informática" in carrera_lower or "licenciatura en informatica" in carrera_lower))
 
-    descuentos_antiguos = {
-        # Descuentan 1 en planes viejos (2022/2023)
-        "Participación como asistente en Jornadas / Workshops / Congresos - (Evento de 1 día presencial)": 1,
-        "Formación Profesional": 1,
-        "Formación Profesional (Segunda Participación)": 1,
-        "Cómo hacer videojuegos sin volverse loco: Gestión, Diseño y Validación de Usuario": 1,
-        "Creación y Animación de Personajes 2D-Del boceto al Sprite Sheet.": 1,
-        "Charlas con Graduados": 1,
-        "PIA Taller 1": 1,
-        "Taller Introductorio de Integrales": 1,
-        "Taller de Introducción al procesamiento digital de Imágenes": 1,
-        "Git": 1,
-        "GraphQL en Springboot": 1,
-
-        # Descuentan 2 en planes viejos (2022/2023)
-        "Participación como asistente en Jornadas / Workshops / Congresos": 2,
-        "Talleres especiales - Taller de GitHub": 2,
-        "Talleres especiales - Taller de Gestión de la seguridad informática": 2,
-        "Taller de Procesamiento digital de imágenes": 2,
-        "Presentación de nuevos planes de las carreras de informática": 2,
-        "Diseño Narrativo de Personajes: Cómo comenzar un relato": 2,
-        "Taller de robótica": 2,
-        "Curso Introducción al Cómputo Paralelo": 2,
-        "De wollok a Java": 2,
-        "Taller de programación": 2,
-        "Principios básicos de la Seguridad de la Información y la Ciberseguridad": 2,
-        "Vibe Coding": 2,
-        "Taller de uso de herramientas para el procesamiento de datos": 2,
-
-        # Descuentan 3 en planes viejos (2022/2023)
-        "Talleres Especiales - Gestión de Firewall": 3,
-        "Participación en Competencias Estudiantiles - Rally Innovación": 3,
-        "Participación en competencias estudiantiles": 3,
-        "Participación en Proyectos Abiertos": 3,
-        "Intercambios estudiantiles presenciales y/o virtuales": 3,
-        "Talleres Especiales (más de 32hs)": 3,
-        "Curso Project Management": 3,
-        "Curso Oracle SQL & PL SQL": 3,
-        "Curso Redes Móviles Celulares": 3,
-        "Curso Enlaces Inalámbricos Fijos": 3,
-        "Curso Redes de Fibra Óptica": 3,
-        "Del Prototipo al Portfolio Profesional": 3,
-        "Lenguajes educativos para aprender a programar": 3,
-        "Curso Introducción a UML": 3,
-
-        # Descuentan 5 en planes viejos (2022/2023)
-        "Rally Latinoamericano de Innovación - 1ra participación": 5,
-        "Rally Latinoamericano de Innovación - 2da participación": 5,
-        "Cursadas Voluntarias en otras Universidades": 5,
-    }
-
-    if nombre_materia in descuentos_antiguos:
-        # Excepción Licenciatura en Informática 2018: no tiene efecto
-        if plan == "2018" and "Licenciatura en Informática" in carrera:
+    # 1. Participación como asistente en Jornadas / Workshops / Congresos
+    if nombre_materia == "Participación como asistente en Jornadas / Workshops / Congresos":
+        if is_lic_info_2018:
             pass
-        # Planes 2025: descuentan 1 por defecto (salvo Cursadas Voluntarias y Talleres >32hs que descuentan 2)
         elif plan == "2025":
-            if nombre_materia in ["Cursadas Voluntarias en otras Universidades", "Talleres Especiales (más de 32hs)"]:
-                a_res -= 2
-            else:
-                a_res -= 1
-        # Planes 2022 / 2023: aplican el descuento según la tabla
+            a_res -= 1
         elif plan in ["2022", "2023"]:
-            a_res -= descuentos_antiguos[nombre_materia]
+            a_res -= 2
 
+    # 2. Participación como asistente en Jornadas / Workshops / Congresos - (Evento de 1 día presencial)
+    elif nombre_materia == "Participación como asistente en Jornadas / Workshops / Congresos - (Evento de 1 día presencial)":
+        if is_lic_info_2018:
+            pass
+        elif plan == "2025":
+            a_res -= 1
+        elif plan in ["2022", "2023"]:
+            a_res -= 1
 
+    # 3. Talleres especiales - Taller de GitHub
+    elif nombre_materia == "Talleres especiales - Taller de GitHub":
+        if is_lic_info_2018:
+            pass
+        elif plan == "2025":
+            a_res -= 1
+        elif plan in ["2022", "2023"]:
+            a_res -= 2
+
+    # 4. Talleres especiales - Taller de Gestión de la seguridad informática
+    elif nombre_materia == "Talleres especiales - Taller de Gestión de la seguridad informática":
+        if is_lic_info_2018:
+            pass
+        elif plan == "2025":
+            a_res -= 1
+        elif plan in ["2022", "2023"]:
+            a_res -= 2
+
+    # 5. Talleres Especiales - Gestión de Firewall
+    elif nombre_materia == "Talleres Especiales - Gestión de Firewall":
+        if is_lic_info_2018:
+            pass
+        elif plan == "2025":
+            a_res -= 1
+        elif plan in ["2022", "2023"]:
+            a_res -= 3
+
+    # 6. Talleres Especiales (más de 32hs)
+    elif nombre_materia == "Talleres Especiales (más de 32hs)":
+        if is_lic_info_2018:
+            pass
+        elif plan == "2025":
+            a_res -= 2
+        elif plan in ["2022", "2023"]:
+            a_res -= 3
+
+    # 7. Participación en Competencias Estudiantiles - Rally Innovación
+    elif nombre_materia == "Participación en Competencias Estudiantiles - Rally Innovación":
+        if is_lic_info_2018:
+            pass
+        elif plan == "2025":
+            a_res -= 1
+        elif plan in ["2022", "2023"]:
+            a_res -= 3
+
+    # 8. Participación en competencias estudiantiles
+    elif nombre_materia == "Participación en competencias estudiantiles":
+        if is_lic_info_2018:
+            pass
+        elif plan == "2025":
+            a_res -= 1
+        elif plan in ["2022", "2023"]:
+            a_res -= 3
+
+    # 9. Rally Latinoamericano de Innovación - 1ra participación
+    elif nombre_materia == "Rally Latinoamericano de Innovación - 1ra participación":
+        if is_lic_info_2018:
+            pass
+        elif plan == "2025":
+            a_res -= 1
+        elif plan in ["2022", "2023"]:
+            a_res -= 5
+
+    # 10. Rally Latinoamericano de Innovación - 2da participación
+    elif nombre_materia == "Rally Latinoamericano de Innovación - 2da participación":
+        if is_lic_info_2018:
+            pass
+        elif plan == "2025":
+            a_res -= 1
+        elif plan in ["2022", "2023"]:
+            a_res -= 5
+
+    # 11. Participación en Proyectos Abiertos
+    elif nombre_materia == "Participación en Proyectos Abiertos":
+        if is_lic_info_2018:
+            pass
+        elif plan == "2025":
+            a_res -= 1
+        elif plan in ["2022", "2023"]:
+            a_res -= 3
+
+    # 12. Intercambios estudiantiles presenciales y/o virtuales
+    elif nombre_materia == "Intercambios estudiantiles presenciales y/o virtuales":
+        if is_lic_info_2018:
+            pass
+        elif plan == "2025":
+            a_res -= 1
+        elif plan in ["2022", "2023"]:
+            a_res -= 3
+
+    # 13. Cursadas Voluntarias en otras Universidades
+    elif nombre_materia == "Cursadas Voluntarias en otras Universidades":
+        if is_lic_info_2018:
+            pass
+        elif plan == "2025":
+            a_res -= 2
+        elif plan in ["2022", "2023"]:
+            a_res -= 5
+
+    # 14. Formación Profesional
+    elif nombre_materia == "Formación Profesional":
+        if is_lic_info_2018:
+            pass
+        elif plan == "2025":
+            a_res -= 1
+        elif plan in ["2022", "2023"]:
+            a_res -= 1
+
+    # 15. Formación Profesional (Segunda Participación)
+    elif nombre_materia == "Formación Profesional (Segunda Participación)":
+        if is_lic_info_2018:
+            pass
+        elif plan == "2025":
+            a_res -= 1
+        elif plan in ["2022", "2023"]:
+            a_res -= 1
+
+    # 16. Taller de Procesamiento digital de imágenes
+    elif nombre_materia == "Taller de Procesamiento digital de imágenes":
+        if is_lic_info_2018:
+            pass
+        elif plan == "2025":
+            a_res -= 1
+        elif plan in ["2022", "2023"]:
+            a_res -= 2
+
+    # 17. Taller de Introducción al procesamiento digital de Imágenes
+    elif nombre_materia == "Taller de Introducción al procesamiento digital de Imágenes":
+        if is_lic_info_2018:
+            pass
+        elif plan == "2025":
+            a_res -= 1
+        elif plan in ["2022", "2023"]:
+            a_res -= 1
+
+    # 18. Curso Project Management
+    elif nombre_materia == "Curso Project Management":
+        if is_lic_info_2018:
+            pass
+        elif plan == "2025":
+            a_res -= 1
+        elif plan in ["2022", "2023"]:
+            a_res -= 3
+
+    # 19. Curso Oracle SQL & PL SQL
+    elif nombre_materia == "Curso Oracle SQL & PL SQL":
+        if is_lic_info_2018:
+            pass
+        elif plan == "2025":
+            a_res -= 1
+        elif plan in ["2022", "2023"]:
+            a_res -= 3
+
+    # 20. Curso Redes Móviles Celulares
+    elif nombre_materia == "Curso Redes Móviles Celulares":
+        if is_lic_info_2018:
+            pass
+        elif plan == "2025":
+            a_res -= 1
+        elif plan in ["2022", "2023"]:
+            a_res -= 3
+
+    # 21. Curso Enlaces Inalámbricos Fijos
+    elif nombre_materia == "Curso Enlaces Inalámbricos Fijos":
+        if is_lic_info_2018:
+            pass
+        elif plan == "2025":
+            a_res -= 1
+        elif plan in ["2022", "2023"]:
+            a_res -= 3
+
+    # 22. Curso Redes de Fibra Óptica
+    elif nombre_materia == "Curso Redes de Fibra Óptica":
+        if is_lic_info_2018:
+            pass
+        elif plan == "2025":
+            a_res -= 1
+        elif plan in ["2022", "2023"]:
+            a_res -= 3
+
+    # 23. Curso Introducción al Cómputo Paralelo
+    elif nombre_materia == "Curso Introducción al Cómputo Paralelo":
+        if is_lic_info_2018:
+            pass
+        elif plan == "2025":
+            a_res -= 1
+        elif plan in ["2022", "2023"]:
+            a_res -= 2
+
+    # 24. Presentación de nuevos planes de las carreras de informática
+    elif nombre_materia == "Presentación de nuevos planes de las carreras de informática":
+        if is_lic_info_2018:
+            pass
+        elif plan == "2025":
+            a_res -= 1
+        elif plan in ["2022", "2023"]:
+            a_res -= 2
+
+    # 25. Cómo hacer videojuegos sin volverse loco: Gestión, Diseño y Validación de Usuario
+    elif nombre_materia == "Cómo hacer videojuegos sin volverse loco: Gestión, Diseño y Validación de Usuario":
+        if is_lic_info_2018:
+            pass
+        elif plan == "2025":
+            a_res -= 1
+        elif plan in ["2022", "2023"]:
+            a_res -= 1
+
+    # 26. Creación y Animación de Personajes 2D-Del boceto al Sprite Sheet.
+    elif nombre_materia == "Creación y Animación de Personajes 2D-Del boceto al Sprite Sheet.":
+        if is_lic_info_2018:
+            pass
+        elif plan == "2025":
+            a_res -= 1
+        elif plan in ["2022", "2023"]:
+            a_res -= 1
+
+    # 27. Diseño Narrativo de Personajes: Cómo comenzar un relato
+    elif nombre_materia == "Diseño Narrativo de Personajes: Cómo comenzar un relato":
+        if is_lic_info_2018:
+            pass
+        elif plan == "2025":
+            a_res -= 1
+        elif plan in ["2022", "2023"]:
+            a_res -= 2
+
+    # 28. Del Prototipo al Portfolio Profesional
+    elif nombre_materia == "Del Prototipo al Portfolio Profesional":
+        if is_lic_info_2018:
+            pass
+        elif plan == "2025":
+            a_res -= 1
+        elif plan in ["2022", "2023"]:
+            a_res -= 3
+
+    # 29. Taller de robótica
+    elif nombre_materia == "Taller de robótica":
+        if is_lic_info_2018:
+            pass
+        elif plan == "2025":
+            a_res -= 1
+        elif plan in ["2022", "2023"]:
+            a_res -= 2
+
+    # 30. Charlas con Graduados
+    elif nombre_materia == "Charlas con Graduados":
+        if is_lic_info_2018:
+            pass
+        elif plan == "2025":
+            a_res -= 1
+        elif plan in ["2022", "2023"]:
+            a_res -= 1
+
+    # 31. PIA Taller 1
+    elif nombre_materia == "PIA Taller 1":
+        if is_lic_info_2018:
+            pass
+        elif plan == "2025":
+            a_res -= 1
+        elif plan in ["2022", "2023"]:
+            a_res -= 1
+
+    # 32. Taller Introductorio de Integrales
+    elif nombre_materia == "Taller Introductorio de Integrales":
+        if is_lic_info_2018:
+            pass
+        elif plan == "2025":
+            a_res -= 1
+        elif plan in ["2022", "2023"]:
+            a_res -= 1
+
+    # 33. Lenguajes educativos para aprender a programar
+    elif nombre_materia == "Lenguajes educativos para aprender a programar":
+        if is_lic_info_2018:
+            pass
+        elif plan == "2025":
+            a_res -= 1
+        elif plan in ["2022", "2023"]:
+            a_res -= 3
+
+    # 34. Git
+    elif nombre_materia == "Git":
+        if is_lic_info_2018:
+            pass
+        elif plan == "2025":
+            a_res -= 1
+        elif plan in ["2022", "2023"]:
+            a_res -= 1
+
+    # 35. GraphQL en Springboot
+    elif nombre_materia == "GraphQL en Springboot":
+        if is_lic_info_2018:
+            pass
+        elif plan == "2025":
+            a_res -= 1
+        elif plan in ["2022", "2023"]:
+            a_res -= 1
+
+    # 36. De wollok a Java
+    elif nombre_materia == "De wollok a Java":
+        if is_lic_info_2018:
+            pass
+        elif plan == "2025":
+            a_res -= 1
+        elif plan in ["2022", "2023"]:
+            a_res -= 2
+
+    # 37. Taller de programación
+    elif nombre_materia == "Taller de programación":
+        if is_lic_info_2018:
+            pass
+        elif plan == "2025":
+            a_res -= 1
+        elif plan in ["2022", "2023"]:
+            a_res -= 2
+
+    # 38. Principios básicos de la Seguridad de la Información y la Ciberseguridad
+    elif nombre_materia == "Principios básicos de la Seguridad de la Información y la Ciberseguridad":
+        if is_lic_info_2018:
+            pass
+        elif plan == "2025":
+            a_res -= 1
+        elif plan in ["2022", "2023"]:
+            a_res -= 2
+
+    # 39. Vibe Coding
+    elif nombre_materia == "Vibe Coding":
+        if is_lic_info_2018:
+            pass
+        elif plan == "2025":
+            a_res -= 1
+        elif plan in ["2022", "2023"]:
+            a_res -= 2
+
+    # 40. Taller de uso de herramientas para el procesamiento de datos
+    elif nombre_materia == "Taller de uso de herramientas para el procesamiento de datos":
+        if is_lic_info_2018:
+            pass
+        elif plan == "2025":
+            a_res -= 1
+        elif plan in ["2022", "2023"]:
+            a_res -= 2
+
+    # 41. Curso Introducción a UML
+    elif nombre_materia == "Curso Introducción a UML":
+        if is_lic_info_2018:
+            pass
+        elif plan == "2025":
+            a_res -= 1
+        elif plan in ["2022", "2023"]:
+            a_res -= 3
     
 
     #el eje que absorve los datos 
