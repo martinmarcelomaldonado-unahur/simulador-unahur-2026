@@ -2,6 +2,7 @@ import streamlit as st
 import plotly.express as px
 import pandas as pd
 from motor_logico import calcular_todos_los_progresos
+from motor_logico import calcular_todos_los_progresos, obtener_aprobadas_licenciatura
 
 # Configuración de la página
 st.set_page_config(page_title="Simulador Multi-Carrera UNaHur", layout="wide", page_icon="📊")
@@ -304,5 +305,56 @@ st.dataframe(
     },
     hide_index=True
 )
+
+# --- VISTA DETALLADA DE LA LICENCIATURA EN INFORMÁTICA ---
+st.divider()
+st.subheader("🎓 Materias Aprobadas / Reconocidas en Licenciatura en Informática (Nuevo Plan)")
+
+dict_lic = obtener_aprobadas_licenciatura(seleccionadas)
+total_reconocidas = sum(len(mats) for mats in dict_lic.values())
+
+if total_reconocidas == 0:
+    st.info("Aún no tenés materias tildadas que acrediten directa o por combo en la Licenciatura.")
+else:
+    st.success(f"¡Tenés **{total_reconocidas}** materias reconociéndose en el nuevo plan de la Licenciatura!")
+    
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        with st.expander("📌 1er Año", expanded=True):
+            if dict_lic["1er año"]:
+                for m in dict_lic["1er año"]:
+                    st.markdown(f"- ✅ **{m}**")
+            else:
+                st.caption("Sin materias aprobadas en este módulo.")
+
+        with st.expander("📌 2do Año", expanded=True):
+            if dict_lic["2do año"]:
+                for m in dict_lic["2do año"]:
+                    st.markdown(f"- ✅ **{m}**")
+            else:
+                st.caption("Sin materias aprobadas en este módulo.")
+
+        with st.expander("📌 3er Año", expanded=False):
+            if dict_lic["3er año"]:
+                for m in dict_lic["3er año"]:
+                    st.markdown(f"- ✅ **{m}**")
+            else:
+                st.caption("Sin materias aprobadas en este módulo.")
+
+    with col2:
+        with st.expander("📌 4to Año", expanded=False):
+            if dict_lic["4to año"]:
+                for m in dict_lic["4to año"]:
+                    st.markdown(f"- ✅ **{m}**")
+            else:
+                st.caption("Sin materias aprobadas en este módulo.")
+
+        with st.expander("📌 5to Año", expanded=False):
+            if dict_lic["5to año"]:
+                for m in dict_lic["5to año"]:
+                    st.markdown(f"- ✅ **{m}**")
+            else:
+                st.caption("Sin materias aprobadas en este módulo.")
 
 st.caption("Simulador desarrollado por Martín Maldonado - UNaHur")

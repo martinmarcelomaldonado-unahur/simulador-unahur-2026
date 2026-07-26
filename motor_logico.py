@@ -1459,4 +1459,173 @@ def calcular_todos_los_progresos(materias_aprobadas):
             "Materias Restantes": max(0, mats_restantes)
         })
 
+
     return pd.DataFrame(resultados)
+
+def obtener_aprobadas_licenciatura(materias_aprobadas):
+
+    aprobadas = {
+        "1er año": [],
+        "2do año": [],
+        "3er año": [],
+        "4to año": [],
+        "5to año": []
+    }
+
+    # Helper para buscar de forma insensible a mayúsculas/minúsculas
+    mats_set = {m.strip().lower() for m in materias_aprobadas}
+    
+    def tiene(nombre):
+        return nombre.strip().lower() in mats_set
+
+    # ==================== 1er Año ====================
+    if tiene("Introducción a Logica y Problemas Computacionales"):
+        aprobadas["1er año"].append("Introducción a lógica y problemas computacionales")
+        
+    if tiene("Matemática para informática I"):
+        aprobadas["1er año"].append("Matemática para informática I")
+
+    if tiene("Matemática para informática II"):
+            aprobadas["1er año"].append("Matemática para informática II")
+        
+    if tiene("Organización de Computadoras I"):
+        aprobadas["1er año"].append("Organización de computadoras I")
+        
+    if tiene("Nuevos Entornos y Lenguajes"):
+        aprobadas["1er año"].append("Cultura y alfabetización digital en la universidad (ex Nuevos Entornos)")
+        
+    if tiene("Tecnología y Sociedad"):
+        aprobadas["1er año"].append("Tecnología y sociedad")
+        
+    # Inglés: solo si tiene aprobado Inglés I e Inglés II
+    if tiene("Inglés I") and tiene("Inglés II"):
+        aprobadas["1er año"].append("Inglés I e II")
+        
+    if tiene("Programación Estructurada"):
+        aprobadas["1er año"].append("Programación estructurada")
+        
+    if tiene("Taller de marcado"):
+        aprobadas["1er año"].append("Lenguajes informáticos I (ex Taller de Marcado)")
+        
+    if tiene("Organización de Computadoras II"):
+        aprobadas["1er año"].append("Organización de computadoras II")
+
+
+    # ==================== 2do Año ====================
+    if tiene("Programación con Objetos I"):
+        aprobadas["2do año"].append("Programación con objetos I")
+        
+    if tiene("Estructuras de Datos"):
+        aprobadas["2do año"].append("Estructuras de datos")
+        
+    if tiene("Bases de Datos"):
+        aprobadas["2do año"].append("Bases de datos")
+        
+    if tiene("Análisis Matemático"):
+        aprobadas["2do año"].append("Matemática para informática III (ex Análisis Matemático)")
+        
+    if tiene("Redes de Computadoras"):
+        aprobadas["2do año"].append("Redes de computadoras")
+        
+    if tiene("Programación con Objetos II"):
+        aprobadas["2do año"].append("Programación con objetos II")
+        
+    # Elementos de Ing SW otorga equivalencia en Sistemas y organizaciones (2do año) e Ingeniería de Software I (3er año)
+    if tiene("Elementos de Ingeniería de Software"):
+        aprobadas["2do año"].append("Sistemas y organizaciones (ex Elementos de Ing. SW)")
+        
+    if tiene("Algoritmos"):
+        aprobadas["2do año"].append("Algoritmos")
+        
+    if tiene("Sistemas Operativos"):
+        aprobadas["2do año"].append("Sistemas operativos")
+        
+    if tiene("Materia UNAHUR I"):
+        aprobadas["2do año"].append("Materia UNAHUR I")
+
+
+    # ==================== 3er Año ====================
+    if tiene("Construccion de Interfaces de Usuario"):
+        aprobadas["3er año"].append("Construcción de interfaces de usuario")
+        
+    if tiene("Estrategias de Persistencia"):
+        aprobadas["3er año"].append("Estrategias de persistencia")
+        
+    if tiene("Elementos de Ingeniería de Software"):
+        aprobadas["3er año"].append("Ingeniería de software I (ex Elementos de Ing. SW)")
+        
+    if tiene("Ejercicio Profesional"):
+        aprobadas["3er año"].append("Ejercicio profesional en tecnología (ex Ejercicio Profesional)")
+        
+    # Buscamos 'Matemática II' que es el nombre en el selector de la Licenciatura
+    if tiene("Matemática II") or tiene("Álgebra lineal"):
+        aprobadas["3er año"].append("Álgebra Lineal (ex Matemática II Licenciatura)")
+        
+    if tiene("Desarrollo de Aplicaciones"):
+        aprobadas["3er año"].append("Desarrollo de aplicaciones")
+        
+    if tiene("Laboratorio de Sistemas Op. y Redes"):
+        aprobadas["3er año"].append("Laboratorio de sistemas operativos y redes")
+        
+    # Combo: Funcional + Objetos III + Características de Lenguajes -> Lenguajes Informáticos II
+    if tiene("Programación Funcional") and tiene("Programación con Objetos III") and tiene("Características de Lenguajes de Comp."):
+        aprobadas["3er año"].append("Lenguajes informáticos II (Combo: Funcional + Objetos III + Caract. Lenguajes)")
+        
+    if tiene("Arquitectura de SW I"):
+        aprobadas["3er año"].append("Arquitectura de software I")
+        
+    if tiene("Matemática III"):
+        aprobadas["3er año"].append("Matemática para informática IV (ex Matemática III)")
+
+
+    # ==================== 4to Año ====================
+    if tiene("Ingeniería de Requerimientos"):
+        aprobadas["4to año"].append("Ingeniería de software II (ex Ing. de Requerimientos)")
+        
+    if tiene("Probabilidad y Estadística"):
+        aprobadas["4to año"].append("Probabilidad y estadística")
+        
+    if tiene("Programación Concurrente"):
+        aprobadas["4to año"].append("Lenguajes informáticos III (ex Prog. Concurrente)")
+        
+    if tiene("Seguridad de la Información"):
+        aprobadas["4to año"].append("Seguridad de la información")
+        
+    if tiene("Teorías de la Computación"):
+        aprobadas["4to año"].append("Computabilidad y complejidad (ex Teorías de la Computación)")
+        
+    if tiene("Fundamentos Redes Neuronales"):
+        aprobadas["4to año"].append("Fundamentos de redes neuronales (Electiva)")
+        
+    if tiene("Lógica y Programación"):
+        aprobadas["4to año"].append("Lenguajes informáticos IV (ex Lógica y Programación)")
+        
+    # Combo: Lenguajes Formales y Autómatas + Parseo y Generación de Código
+    if tiene("Lenguajes Formales y Autómatas") and tiene("Parseo y Generación de Código"):
+        aprobadas["4to año"].append("Formalización de lenguajes y generación de código (Combo: Leng. Formales + Parseo)")
+        
+    if tiene("Arquitectura de SW II"):
+        aprobadas["4to año"].append("Arquitectura de software II")
+        
+    if tiene("Práctica Profesional Supervisada (PPS)"):
+        aprobadas["4to año"].append("Práctica profesional supervisada")
+
+
+    # ==================== 5to Año ====================
+    if tiene("Gestión de Proyectos de Des. de Software"):
+        aprobadas["5to año"].append("Gestión de proyectos de desarrollo de software")
+        
+    if tiene("Aprendizaje Automático"):
+        aprobadas["5to año"].append("Aprendizaje automático")
+        
+    if tiene("Sistemas Distribuidos y Tiempos Real"):
+        aprobadas["5to año"].append("Sistemas distribuidos y tiempo real")
+        
+    if tiene("Arquitectura de Computadoras"):
+        aprobadas["5to año"].append("Arquitectura de computadoras")
+        
+    if tiene("Tesina de Licenciatura"):
+        aprobadas["5to año"].append("Proyecto final (ex Tesina de Licenciatura)")
+
+    return aprobadas
+
