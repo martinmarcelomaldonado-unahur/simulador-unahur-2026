@@ -29,3 +29,11 @@ build/
 .DS_Store
 
 # --- RECUPERACION ---
+# --- OTROS ARCHIVOS TEMPORALES Y DE ENTORNO ---
+*.pyc
+.ipynb_checkpoints/
+.streamlit/config.toml
+
+# --- SISTEMA OPERATIVO ---
+Thumbs.db
+ehthumbs.db
